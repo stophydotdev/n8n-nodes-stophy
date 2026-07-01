@@ -33,4 +33,8 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Release
-        run: bun run release
+        run: |
+          [ -n "$NPM_TOKEN" ] && npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
+          bun run release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
