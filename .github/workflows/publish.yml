@@ -1,25 +1,8 @@
-# Publishes this n8n community node package to npm on every version tag push.
-#
-# From May 1 2026, n8n requires all community nodes to be published via GitHub
-# Actions with npm provenance. `bun run release` (n8n-node release) detects CI
-# and runs lint + build, then publishes with provenance (NPM_CONFIG_PROVENANCE).
-#
-# ─── ONE-TIME SETUP ────────────────────────────────────────────────────────────
-# Option A - OIDC Trusted Publishing (recommended, no secrets):
-#   npmjs.com → package settings → Trusted Publishers → add this repo with
-#   workflow name "publish.yml". Leave NPM_TOKEN unset.
-# Option B - npm token: add an NPM_TOKEN repo secret (granular, read+write).
-#
-# ─── RELEASE ───────────────────────────────────────────────────────────────────
-# Locally run `bun run release` to bump the version, update the changelog,
-# commit, tag, and push - which triggers this workflow.
-
 name: Publish
 
 on:
   push:
     tags:
-      # Matches 0.1.0, 1.2.3, 2.0.0-rc.1, etc.
       - '*.*.*'
 
 jobs:
@@ -28,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      # Required to mint an OIDC token for npm provenance attestation.
       id-token: write
       contents: read
 
@@ -44,14 +26,11 @@ jobs:
           node-version: 'lts/*'
           registry-url: 'https://registry.npmjs.org/'
 
+      - name: Update npm
+        run: npm install -g npm@latest
+
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
       - name: Release
-        # Lint + build run automatically; publishes to npm with provenance.
-        # Option A (OIDC): leave NPM_TOKEN unset. Option B: set NPM_TOKEN secret.
-        run: |
-          [ -n "$NPM_TOKEN" ] && npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
-          bun run release
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: bun run release
