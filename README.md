@@ -1,6 +1,6 @@
 # n8n-nodes-stophy
 
-An [n8n](https://n8n.io) community node for **[Stophy](https://stophy.dev)** - YouTube context for AI agents. It wraps the Stophy API (`https://api.stophy.dev`returning structured data straight into your workflows.
+An [n8n](https://n8n.io) community node for **[Stophy](https://stophy.dev)** - YouTube context for AI agents. It wraps the Stophy API (`https://api.stophy.dev`), returning structured data straight into your workflows.
 
 [Installation](#installation) · [Credentials](#credentials) · [Operations](#operations) · [Development](#development)
 
