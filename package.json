@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-stophy",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "n8n community node to interact with the Stophy API.",
   "license": "MIT",
   "author": {
