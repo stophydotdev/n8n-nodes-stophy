@@ -1,0 +1,66 @@
+{
+  "name": "n8n-nodes-stophy",
+  "version": "0.1.0",
+  "description": "n8n community node to interact with the Stophy API.",
+  "license": "MIT",
+  "author": {
+    "name": "Hussein Hakizimana",
+    "email": "hussein@hakiiizimana.com"
+  },
+  "homepage": "https://stophy.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stophydotdev/n8n-nodes-stophy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stophydotdev/n8n-nodes-stophy/issues"
+  },
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "stophy",
+    "youtube",
+    "youtube-transcript",
+    "youtube-comments",
+    "youtube-channel",
+    "youtube-playlist",
+    "youtube-search",
+    "ai-agent",
+    "llm"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "n8n-node build",
+    "build:watch": "tsc --watch",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "release": "n8n-node release",
+    "prepublishOnly": "n8n-node build"
+  },
+  "files": [
+    "dist/nodes",
+    "dist/credentials"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/StophyApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Stophy/Stophy.node.js"
+    ]
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "^0.37.2",
+    "eslint": "9.39.4",
+    "prettier": "^3.9.4",
+    "release-it": "^20.2.1",
+    "typescript": "^5.9.3"
+  }
+}
