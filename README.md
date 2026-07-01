@@ -60,7 +60,7 @@ Run an interactive release locally - it bumps the version, updates the changelog
 bun run release      # n8n-node release
 ```
 
-Pushing the version tag triggers `.github/workflows/publish.yml`, which lints, builds, and publishes to npm **with provenance** (required for n8n verified community nodes from May 2026). Configure [npm Trusted Publishing](https://docs.npmjs.com/trusted-publishers) for this repo + `publish.yml`, or set an `NPM_TOKEN` repo secret.
+Pushing the version tag triggers `.github/workflows/publish.yml`, which lints, builds, and publishes to npm **with provenance** (required for n8n verified community nodes from May 2026) via [npm Trusted Publishing](https://docs.npmjs.com/trusted-publishers) (OIDC) - no `NPM_TOKEN` needed. Add the trusted publisher on npmjs.com (package Settings > Trusted Publishers > GitHub Actions, workflow `publish.yml`).
 
 ## License
 
